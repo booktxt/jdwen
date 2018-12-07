@@ -2,6 +2,7 @@ package com.air.garden.house.controller;
 
 import com.air.garden.house.mapper.AlarmSettingMapper;
 import com.air.garden.house.model.AlarmSetting;
+import com.air.garden.house.service.AlarmSettingService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,9 @@ public class AlarmSettingController {
     @Autowired
     private AlarmSettingMapper alarmSettingMapper;
 
+    @Autowired
+    private AlarmSettingService alarmSettingService;
+
     @PostMapping("/info")
     public String saveAlarmSetting() {
 
@@ -44,7 +48,8 @@ public class AlarmSettingController {
 
     @GetMapping("/alarm")
     public String getAlarmInfo() {
-        List<AlarmSetting> alarmSettingList = alarmSettingMapper.listByEnterpriseId(8000091);
+        List<AlarmSetting> alarmSettingList = alarmSettingService.listByEnterpriseId(8000091);
+
         String alarmInfo = JSONObject.toJSONString(alarmSettingList);
         return alarmInfo;
     }
