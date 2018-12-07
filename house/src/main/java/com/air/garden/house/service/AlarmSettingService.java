@@ -15,4 +15,6 @@ public interface AlarmSettingService {
 
     List<AlarmSetting> listByEnterpriseId(Integer enterpriseId);
 
+    String getRabbitInfo();
+
 }

@@ -5,6 +5,7 @@ import com.air.garden.house.model.AlarmSetting;
 import com.air.garden.house.service.AlarmSettingService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.util.ByteUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +53,14 @@ public class AlarmSettingController {
 
         String alarmInfo = JSONObject.toJSONString(alarmSettingList);
         return alarmInfo;
+    }
+
+    @GetMapping("/rabbit")
+    public String getRabbitInfo() {
+
+        String rabbitInfo = alarmSettingService.getRabbitInfo();
+
+        return rabbitInfo;
     }
 
 
