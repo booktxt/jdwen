@@ -33,7 +33,7 @@ public class AlarmSettingServiceImpl implements AlarmSettingService {
     //当启动缓存功能后,则不会再执行程序内的代码  所以只会发送一次消息
 
     @Override
-    //@Cacheable(value = "alarm_list", key = "#enterpriseId")
+    @Cacheable(value = "alarm_list", key = "#enterpriseId")
     //@CacheEvict(value = "alarm_list",allEntries = true)
     public List<AlarmSetting> listByEnterpriseId(Integer enterpriseId) {
 
