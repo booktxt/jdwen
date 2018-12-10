@@ -44,8 +44,15 @@ public class HouseApplicationTest {
         } catch (Exception e) {
 
         }
+    }
+
+
+    @Test
+    public void testEs03() {
+        for (Book book : bookRepository.findByNameLike("游")) {
+            System.out.println(book.getAuthor());
+        }
+    }
 
 
     }
-
-}
