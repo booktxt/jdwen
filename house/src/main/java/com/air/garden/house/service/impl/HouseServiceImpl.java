@@ -4,6 +4,7 @@ import com.air.garden.house.mapper.HouseMapper;
 import com.air.garden.house.model.House;
 import com.air.garden.house.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
+    @Cacheable(value = "houses")
     public List<House> listAll() {
         return houseMapper.listAll();
     }

@@ -1,14 +1,13 @@
 package com.air.garden.house.controller;
 
-import com.air.garden.house.common.ResponseModel;
+import com.air.garden.house.common.ApiResponseResult;
+import com.air.garden.house.common.HttpStatus;
+import com.air.garden.house.common.ResponseResult;
 import com.air.garden.house.model.House;
 import com.air.garden.house.service.HouseService;
-import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import redis.clients.jedis.Response;
 
 import java.util.List;
 
@@ -24,11 +23,11 @@ public class HouseController {
     private HouseService houseService;
 
     @GetMapping("/houses")
-    public ResponseModel listAllHouse() {
+    public ResponseResult listAllHouse() {
 
         List<House> houseList = houseService.listAll();
 
-        return new ResponseModel(houseList);
+        return ResponseResult.success(houseList);
 
     }
 
